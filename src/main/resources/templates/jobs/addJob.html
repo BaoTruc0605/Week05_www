@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Jobs</title>
+</head>
+<body>
+<div class="container">
+    <form action="/postJob" method="post">
+        <label>Company name:</label><br>
+        <input type="hidden" name="companyId" th:value="${company.getId()}" th:text="${company.getName()}">
+        <br>
+        <label>Job name:</label><br>
+        <input type="text" placeholder="Name" required name="name">
+        <br>
+        <label>Job desc:</label><br>
+        <input type="text" placeholder="Desc" required name="desc">
+        <label>Chọn skill:</label>
+        <div th:each="skill : ${skills}">
+            <input type="checkbox" th:id="${skill.id}" th:value="${skill.getId()}"
+                   th:text="${skill.getSkillName()}" name="selectedSkills"><br>
+            <label>Choose level: </label>
+            <select th:for="${skill.getId()}" th:id="${'levelSelected' + skill.id}" name="levelSelected">
+                <option value=""></option>
+                <option value="BEGINER" th:text="BEGINER"></option>
+                <option value="MASTER" th:text="MASTER"></option>
+                <option value="ADVANCED" th:text="ADVANCED"></option>
+                <option value="PROFESSIONAL" th:text="PROFESSIONAL"></option>
+                <option value="IMTERMEDIATE" th:text="IMTERMEDIATE"></option>
+            </select>
+            <br><label th:for="${'info' + skill.id}">Info: </label><input type="text" th:id="${'info' + skill.id}" name="info">
+            <br>
+        </div>
+
+        <button type="submit">Thêm</button>
+    </form>
+</div>
+</body>
+</html>

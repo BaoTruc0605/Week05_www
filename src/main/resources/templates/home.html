@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<div th:unless="${companyLogin.isEmpty()}">
+    <h2>Xin chào company: <span th:text="${companyLogin.get().getName()}"></span></h2>
+
+                Đăng job mới: <a th:href="@{/insertJob(id=${companyLogin.get().getId()})}">Post a new job</a>
+</div>
+<div th:else>
+</div>
+</body>
+</html>

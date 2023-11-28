@@ -16,7 +16,7 @@ public class JobServices {
 
 
 
-    public void addAccount(Job job){
+    public void addJob(Job job){
         jobRepository.save(job);
     }
 

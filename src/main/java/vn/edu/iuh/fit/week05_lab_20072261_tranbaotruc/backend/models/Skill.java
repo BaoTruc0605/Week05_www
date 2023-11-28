@@ -23,7 +23,7 @@ public class Skill {
     private String skillName;
     @Column(name = "skill_desc",nullable = false,columnDefinition = "varchar(300)")
     private String skillDescription;
-    @OneToMany(mappedBy = "skill")
+    @OneToMany(mappedBy = "skill",cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<JobSkill> jobSkills;
 

@@ -20,7 +20,7 @@ C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 <div th:switch="${jobPage}" >
     <h2 th:case="null">No jobs yet!</h2>
     <div th:case="*">
-        <h2>Candidates</h2>
+        <h2>Jobs</h2>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -34,7 +34,7 @@ C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             </thead>
             <tbody>
 
-            <tr th:each="job : ${jobs}">
+            <tr th:each="job : ${jobPage}">
                 <td th:text="${job.id}"></td>
                 <td th:text="${job.company}"></td>
                 <td th:text="${job.desc}"></td>

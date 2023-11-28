@@ -10,7 +10,6 @@ import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.enums.SkillLevel;
 
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "jobSkill")
 @IdClass(JobSkillID.class)
@@ -41,5 +40,15 @@ public class JobSkill {
 
     public JobSkill() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "JobSkill{" +
+                "job=" + job +
+                ", skill=" + skill +
+                ", skillLevel=" + skillLevel +
+                ", moreInfo='" + moreInfo + '\'' +
+                '}';
     }
 }

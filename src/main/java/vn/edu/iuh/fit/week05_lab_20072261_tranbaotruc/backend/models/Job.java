@@ -24,7 +24,7 @@ public class Job {
     private String desc;
     @Column(name = "job_name",nullable = false,columnDefinition = "varchar(255)")
     private String name;
-    @OneToMany(mappedBy = "job")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "job")
     @ToString.Exclude
     private List<JobSkill> jobSkills;
 

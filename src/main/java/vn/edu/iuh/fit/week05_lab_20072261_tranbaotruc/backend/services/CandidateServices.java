@@ -3,11 +3,14 @@ package vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.models.Account;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.models.Candidate;
+import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.models.Company;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.repository.CandidateRepository;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CandidateServices {
@@ -46,5 +49,9 @@ public class CandidateServices {
                 = new PageImpl<>(list, PageRequest.of(currentPage, pageSize),
                 candidates.size());
         return candidatePage;
+    }
+
+    public Optional<Candidate> findByAccount(Account account){
+        return candidateRepository.findCandidateByAccount(account);
     }
 }
