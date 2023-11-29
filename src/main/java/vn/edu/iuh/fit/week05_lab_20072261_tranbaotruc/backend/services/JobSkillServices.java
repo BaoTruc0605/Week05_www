@@ -19,4 +19,5 @@ public class JobSkillServices {
         jobSkillRepository.save(jobSkill);
     }
 
+
 }

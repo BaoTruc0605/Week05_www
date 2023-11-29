@@ -9,8 +9,16 @@
     <h2>Xin chào company: <span th:text="${companyLogin.get().getName()}"></span></h2>
 
                 Đăng job mới: <a th:href="@{/insertJob(id=${companyLogin.get().getId()})}">Post a new job</a>
+    <br>
+    Xem các job đã đăng: <a th:href="@{/listJobByCompany(id=${companyLogin.get().getId()})}">My jobs</a>
 </div>
-<div th:else>
+<div th:unless="${candidateLogin.isEmpty()}">
+    <h2>Xin chào <span th:text="${candidateLogin.get().getFullName()} !!!"></span></h2>
+
+<!--    Đăng job mới: <a th:href="@{/insertJob(id=${companyLogin.get().getId()})}">Post a new job</a>-->
+<!--    <br>-->
+<!--    Xem các job đã đăng: <a th:href="@{/listJobByCompany(id=${companyLogin.get().getId()})}">My jobs</a>-->
+</div>
 </div>
 </body>
 </html>

@@ -16,11 +16,11 @@
         <label>Job desc:</label><br>
         <input type="text" placeholder="Desc" required name="desc">
         <label>Chọn skill:</label>
-        <div th:each="skill : ${skills}">
-            <input type="checkbox" th:id="${skill.id}" th:value="${skill.getId()}"
+        <div th:each="skill : ${skills}" th:id="${skill.id}">
+            <input type="checkbox" th:id="${skill.id}" th:value="${skill.id}"
                    th:text="${skill.getSkillName()}" name="selectedSkills"><br>
             <label>Choose level: </label>
-            <select th:for="${skill.getId()}" th:id="${'levelSelected' + skill.id}" name="levelSelected">
+            <select th:id="${skill.id}" name="levelSelected" >
                 <option value=""></option>
                 <option value="BEGINER" th:text="BEGINER"></option>
                 <option value="MASTER" th:text="MASTER"></option>

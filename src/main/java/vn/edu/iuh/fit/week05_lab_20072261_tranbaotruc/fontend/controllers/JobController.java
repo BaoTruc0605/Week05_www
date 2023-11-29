@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.enums.AccountType;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.enums.SkillLevel;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.enums.SkillType;
@@ -39,6 +40,12 @@ public class JobController {
     public String showJobList(Model model) {
         model.addAttribute("jobs", jobServices.findAllNoPaing());
         return "jobs/jobs";
+    }
+
+    @GetMapping("/listJobByCompany")
+    public String showJobListByCompany(Model model, @RequestParam("id") Long id) {
+        model.addAttribute("jobs", jobServices.findJobsByCompany(companyServices.findById(id).get()));
+        return "jobs/jobByCompany";
     }
 
     @GetMapping("/jobs")
@@ -73,7 +80,7 @@ public class JobController {
     }
 
     @PostMapping("/postJob")
-    public String login(Model model, @RequestParam("companyId") long companyId, @RequestParam("name") String name,
+    public String login(Model model, RedirectAttributes redirectAttributes, @RequestParam("companyId") long companyId, @RequestParam("name") String name,
                         @RequestParam("desc") String desc, @RequestParam(name = "selectedSkills", required = false) List<String> selectedSkills,
                         @RequestParam(name = "levelSelected", required = false) List<String> levelSelected,
                         @RequestParam(name = "info", required = false) List<String> info) {
@@ -83,20 +90,21 @@ public class JobController {
         List<JobSkill> jobSkills = new ArrayList<>();
         Job job = new Job(company.get(), desc, name, null);
         for (int i = 0; i < selectedSkills.size(); i++) {
-            {
-                String skillId = selectedSkills.get(i);
-                String skillLevel = levelSelected.get(i);
-                String skillInfo = info.get(i);
-
-                Skill skill = skillServices.findById(Long.parseLong(skillId)).get();
-                JobSkill jobSkill = new JobSkill(job, skillServices.findById(Long.parseLong(skillId)).get(), SkillLevel.valueOf(skillLevel), skillInfo);
-                jobSkills.add(jobSkill);
-            };
+            String skillId = selectedSkills.get(i);
+            String skillLevel = levelSelected.get(Integer.parseInt(skillId)-1);
+            String skillInfo = info.get(Integer.parseInt(skillId)-1);
+            Skill skill = skillServices.findById(Long.parseLong(skillId)).get();
+            JobSkill jobSkill = new JobSkill(job, skillServices.findById(Long.parseLong(skillId)).get(), SkillLevel.valueOf(skillLevel), skillInfo);
+            jobSkills.add(jobSkill);
+        };
             job.setJobSkills(jobSkills);
             jobServices.addJob(job);
 
-            return "jobs";
-        }
-        return "/home";
+
+        redirectAttributes.addAttribute("id", companyId);
+
+        return "redirect:/listJobByCompany";
     }
+//        return"/home";
 }
+
