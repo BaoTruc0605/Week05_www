@@ -15,6 +15,7 @@ import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.enums.SkillLevel;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.enums.SkillType;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.models.*;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.repository.JobRepository;
+import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.services.CandidateServices;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.services.CompanyServices;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.services.JobServices;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.services.SkillServices;
@@ -35,6 +36,10 @@ public class JobController {
     private CompanyServices companyServices;
     @Autowired
     private SkillServices skillServices;
+
+    @Autowired
+    private CandidateServices candidateServices;
+
 
     @GetMapping("/listJob")
     public String showJobList(Model model) {
@@ -105,6 +110,13 @@ public class JobController {
 
         return "redirect:/listJobByCompany";
     }
-//        return"/home";
+    @GetMapping("/getJobByCan")
+    public String showJobListByCandidate(Model model, @RequestParam("id") Long id) {
+        model.addAttribute("jobs", jobServices.findJobsByCandidate(id));
+        model.addAttribute("can", candidateServices.findById(id).get());
+        return "jobs/jobByCan";
+    }
+
+
 }
 

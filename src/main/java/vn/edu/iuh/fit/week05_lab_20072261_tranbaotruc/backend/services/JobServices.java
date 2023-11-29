@@ -28,9 +28,12 @@ public class JobServices {
     public List<Job> findJobsByCompany(Company company) {
         return jobRepository.findJobsByCompany(company);
     }
-    public List<Job> findJobsByJobSkill(JobSkill jobSkill) {
-        return jobRepository.findJobsByJobSkills(jobSkill);
+
+    public  List<Job> findJobsByCandidate(long canId){
+        return jobRepository.findJobsByCandidate(canId);
     }
+
+
     public Page<Job> findAll(int pageNumber, int pageSize, String sortBy, String sortDirection) {
 
         Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);

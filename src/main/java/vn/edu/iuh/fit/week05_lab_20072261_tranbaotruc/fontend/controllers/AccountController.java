@@ -40,11 +40,12 @@ public class AccountController {
             Optional<Company> company = Optional.empty();
             if(loginAccount.isPresent() && (loginAccount.get().getAccountType() == AccountType.CANDIDATE)){
                 candidate = candidateServices.findByAccount(loginAccount.get());
-                model.addAttribute("candidateLogin", candidate);
+
             } else if(loginAccount.isPresent() && (loginAccount.get().getAccountType() == AccountType.COMPANY)){
                 company = companyServices.findByAccount(loginAccount.get());
-                model.addAttribute("companyLogin", company);
             }
+            model.addAttribute("companyLogin", company);
+            model.addAttribute("candidateLogin", candidate);
             model.addAttribute("loginAccount", loginAccount);
             return "/home";
         }

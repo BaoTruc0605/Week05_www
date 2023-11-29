@@ -13,8 +13,6 @@ public class JobSkillServices {
     @Autowired
     private JobSkillRepository jobSkillRepository;
 
-
-
     public void addAccount(JobSkill jobSkill){
         jobSkillRepository.save(jobSkill);
     }

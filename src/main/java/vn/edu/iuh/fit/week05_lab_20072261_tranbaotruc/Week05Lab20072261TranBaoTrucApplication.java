@@ -44,6 +44,11 @@ public class Week05Lab20072261TranBaoTrucApplication {
     CommandLineRunner initData() {
         return args -> {
             Random rnd = new Random();
+            List<Job> jobs =  jobRepository.findJobsByCandidate(101l);
+            for (Job job: jobs
+                 ) {
+                System.out.println(job);
+            }
 
 //
 //            for (int i = 1; i < 1000; i++) {

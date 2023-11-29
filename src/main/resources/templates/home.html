@@ -5,20 +5,22 @@
     <title>Home</title>
 </head>
 <body>
-<div th:unless="${companyLogin.isEmpty()}">
-    <h2>Xin chào company: <span th:text="${companyLogin.get().getName()}"></span></h2>
 
-                Đăng job mới: <a th:href="@{/insertJob(id=${companyLogin.get().getId()})}">Post a new job</a>
-    <br>
-    Xem các job đã đăng: <a th:href="@{/listJobByCompany(id=${companyLogin.get().getId()})}">My jobs</a>
-</div>
-<div th:unless="${candidateLogin.isEmpty()}">
-    <h2>Xin chào <span th:text="${candidateLogin.get().getFullName()} !!!"></span></h2>
+<div>
+    <div th:if="${companyLogin.isPresent()}">
+        <h2>Xin chào company: <span th:text="${companyLogin.get().getName()}"></span></h2>
+        Đăng job mới: <a th:href="@{/insertJob(id=${companyLogin.get().getId()})}">Post a new job</a>
+        <br>
+        Xem các job đã đăng: <a th:href="@{/listJobByCompany(id=${companyLogin.get().getId()})}">My jobs</a>
 
-<!--    Đăng job mới: <a th:href="@{/insertJob(id=${companyLogin.get().getId()})}">Post a new job</a>-->
-<!--    <br>-->
-<!--    Xem các job đã đăng: <a th:href="@{/listJobByCompany(id=${companyLogin.get().getId()})}">My jobs</a>-->
+    </div>
+    <div th:if="${candidateLogin.isPresent()}">
+        <h2>Xin chào can: <span th:text="${candidateLogin.get().getFullName()}"></span></h2>
+        Job phù hợp: <a th:href="@{/getJobByCan(id=${candidateLogin.get().getId()})}">View suitable job</a>
+
+    </div>
 </div>
-</div>
+
+
 </body>
 </html>

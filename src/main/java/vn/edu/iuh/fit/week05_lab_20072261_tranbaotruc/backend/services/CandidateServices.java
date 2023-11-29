@@ -54,4 +54,8 @@ public class CandidateServices {
     public Optional<Candidate> findByAccount(Account account){
         return candidateRepository.findCandidateByAccount(account);
     }
+    public Optional<Candidate> findById(long id){
+        return candidateRepository.findById(id);
+    }
+
 }

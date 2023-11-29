@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.models.Candidate;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.repository.CandidateRepository;
 import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.services.CandidateServices;
+import vn.edu.iuh.fit.week05_lab_20072261_tranbaotruc.backend.services.JobServices;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,8 @@ public class CandidateController {
     private CandidateRepository candidateRepository;
     @Autowired
     private CandidateServices candidateServices;
+
+
     @GetMapping("/list")
     public String showCandidateList(Model model) {
         model.addAttribute("candidates", candidateServices.findAllNoPaing());
