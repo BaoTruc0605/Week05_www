@@ -10,11 +10,16 @@
 8. Giúp các công ty tìm ứng viên phù hợp rồi gửi mail mời
    ![image](https://github.com/BaoTruc0605/Week05_www/assets/114350927/b9b395fd-4824-4e12-a89a-a9ed2200a54a)
 10. Đề xuất 1 số skill mà ứng viên chưa có
+    ![image](https://github.com/BaoTruc0605/Week05_www/assets/114350927/b5c0325c-a07a-4191-bec7-5940d39873f7)
+
 11. Log in
    ![image](https://github.com/BaoTruc0605/Week05_www/assets/114350927/841e0c12-1cfe-40d7-a5fd-1fc9a4f9af16)
   ![image](https://github.com/BaoTruc0605/Week05_www/assets/114350927/5d1e7373-ba44-4046-8368-fb41b01f1cf0)
 
 12. View Candidates No page
 13. View Candidates with page
-14. View company's jobs
+14. Candidate view các jobs đang đăng tuyển
+    ![image](https://github.com/BaoTruc0605/Week05_www/assets/114350927/2393e6c5-6ed0-43d9-bdbf-83197ef9cf16)
+
+15. View company's jobs
 ![image](https://github.com/BaoTruc0605/Week05_www/assets/114350927/96d6a6d0-3e1f-4358-9898-ed7d6a7bc453)
